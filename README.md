@@ -41,3 +41,23 @@ Visit `pkg.go.dev` to download published modules so you can use them in you proj
 - Automatically download missing dependencies like rsc.io/quote
 - Add them to your go.mod and go.sum
 - Remove any unused modules
+
+
+## Modules
+
+A function whose name starts with a capital letter can be called by a function not in the same package. This is known in Go as an `exported name`. 
+
+In Go, the `:=` operator is a shortcut for declaring and initializing a variable in one line 
+
+```
+var message string
+message = fmt.Sprintf("Hi, %v. Welcome!", name)
+```
+
+vs
+
+```
+ message := fmt.Sprintf("Hi, %v. Welcome!", name)
+```
+
+
