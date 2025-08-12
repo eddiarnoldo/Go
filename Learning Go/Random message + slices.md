@@ -1,3 +1,8 @@
+# Slices
+
+A slice is like an array, except that its size changes dynamically as you add and remove items. The slice is one of Go's most useful types.
+
+```go
 package greetings
 
 import (
@@ -5,32 +10,15 @@ import (
 	"fmt"
 	"math/rand"
 )
+ 
 
 func Hello(name string) (string, error) {
 	if name == "" {
 		return "", errors.New("empty name")
 	}
+	
 	message := fmt.Sprintf(randomFormat(), name)
 	return message, nil
-}
-
-func Hellos(names []string) (map[string]string, error) {
-	//Create a map to associate messages to persons
-	messages := make(map[string]string)
-
-	//This syntax is because `range names` returns to parameters
-	//	- The index of the current item in the loop
-	//  - A copy of the item's value
-	for _, name := range names {
-		message, error := Hello(name)
-		if error != nil {
-			return nil, error
-		}
-
-		messages[name] = message
-	}
-
-	return messages, nil
 }
 
 // This is a lowercase function name which makes it private basically
@@ -44,3 +32,15 @@ func randomFormat() string {
 
 	return formats[rand.Intn(len(formats))]
 }
+```
+
+As we can see in the code above a slice is defined by 
+
+```go
+formats := []string(
+	"1",
+	"2",
+	"3"	
+)
+```
+

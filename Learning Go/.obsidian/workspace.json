@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Error Handling.md",
+                "file": "Go/Create a Go module/Learning Go.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Error Handling"
+              "title": "Learning Go"
+            }
+          },
+          {
+            "id": "d22182de9a1ea7f3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Random message + slices.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Random message + slices"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +101,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Error Handling.md",
+                "file": "Random message + slices.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -114,7 +129,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Error Handling"
+              "title": "Graph of Random message + slices"
             }
           }
         ]
@@ -137,7 +152,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Error Handling.md",
+                "file": "Random message + slices.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -147,7 +162,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Error Handling"
+              "title": "Backlinks for Random message + slices"
             }
           },
           {
@@ -156,12 +171,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Error Handling.md",
+                "file": "Random message + slices.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Error Handling"
+              "title": "Outgoing links from Random message + slices"
             }
           },
           {
@@ -185,13 +200,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Error Handling.md",
+                "file": "Random message + slices.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Error Handling"
+              "title": "Outline of Random message + slices"
             }
           }
         ]
@@ -211,12 +226,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "970e6751ff6181b8",
+  "active": "d22182de9a1ea7f3",
   "lastOpenFiles": [
-    "Learning Go.md",
-    "Hello world + First Steps.md",
-    "Error Handling.md",
-    "Modules.md",
+    "Go/Create a Go module/Error Handling.md",
+    "Go/Create a Go module/Modules.md",
+    "Go/Create a Go module/Learning Go.md",
+    "Random message + slices.md",
+    "Go/Create a Go module/Hello world + First Steps.md",
+    "Go/Create a Go module",
     "Welcome.md",
     "Go"
   ]
