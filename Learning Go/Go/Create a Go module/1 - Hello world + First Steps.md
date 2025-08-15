@@ -30,5 +30,3 @@ Contains functions for formatting text, including printing to the console. This 
 
 `go run .`
 
-## Dependencies?
-
