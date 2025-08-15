@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Learning Go/Go/Create a Go module/6 - Add a test.md",
+                "file": "Learning Go/Go/Create a Go module/6 - Compile and Install code to run.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "6 - Add a test"
+              "title": "6 - Compile and Install code to run"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Learning Go/Go/Create a Go module/6 - Add a test.md",
+                "file": "Learning Go/Go/Create a Go module/6 - Compile and Install code to run.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 6 - Add a test"
+              "title": "Backlinks for 6 - Compile and Install code to run"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Learning Go/Go/Create a Go module/6 - Add a test.md",
+                "file": "Learning Go/Go/Create a Go module/6 - Compile and Install code to run.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 6 - Add a test"
+              "title": "Outgoing links from 6 - Compile and Install code to run"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Learning Go/Go/Create a Go module/6 - Add a test.md",
+                "file": "Learning Go/Go/Create a Go module/6 - Compile and Install code to run.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 6 - Add a test"
+              "title": "Outline of 6 - Compile and Install code to run"
             }
           }
         ]
@@ -170,7 +170,9 @@
   },
   "active": "c8527e3eb8e6bd88",
   "lastOpenFiles": [
-    "Learning Go/Go/Create a Go module/1 - Hello world + First Steps.md",
-    "Learning Go/Go/Create a Go module/6 - Add a test.md"
+    "modules/hello/hello",
+    "Learning Go/Go/Create a Go module/6 - Add a test.md",
+    "Learning Go/Go/Create a Go module/6 - Compile and Install code to run.md",
+    "Learning Go/Go/Create a Go module/1 - Hello world + First Steps.md"
   ]
 }
