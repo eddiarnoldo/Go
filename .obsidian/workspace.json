@@ -1,0 +1,176 @@
+{
+  "main": {
+    "id": "9bc0c623a86cc6ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "be4a83517066f679",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c8527e3eb8e6bd88",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Learning Go/Go/Create a Go module/6 - Add a test.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "6 - Add a test"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bc87bbb8dfd858b8",
+    "type": "split",
+    "children": [
+      {
+        "id": "54552a0e599afc9b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2c6103f9e32286eb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "f569fabfbab8bab6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "72789ef573171a16",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9e4b9eb6ef4a862b",
+    "type": "split",
+    "children": [
+      {
+        "id": "fd4c1e718521f6d3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc4b1d6859c33925",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Learning Go/Go/Create a Go module/6 - Add a test.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 6 - Add a test"
+            }
+          },
+          {
+            "id": "04c86d0bac4df52a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Learning Go/Go/Create a Go module/6 - Add a test.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 6 - Add a test"
+            }
+          },
+          {
+            "id": "8f688b6f48d38a8d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "d940507eb15c3f0b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Learning Go/Go/Create a Go module/6 - Add a test.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 6 - Add a test"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c8527e3eb8e6bd88",
+  "lastOpenFiles": [
+    "Learning Go/Go/Create a Go module/1 - Hello world + First Steps.md",
+    "Learning Go/Go/Create a Go module/6 - Add a test.md"
+  ]
+}
