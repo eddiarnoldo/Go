@@ -334,6 +334,8 @@ for {
 ```
 
 
+----
+
 ## IF
 
 Same as the `for` the `if` does not need the `()`
@@ -359,4 +361,204 @@ func pow(x, n, lim float64) float64 {
 ```
 
 ` v := math.Pow(x, n);` this only exists in the context of the `if` also in the `else` body
+
+#### Exercise implement Newton formula for sqrt
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func Sqrt(x float64) float64 {
+	z := 1.0
+	old_z := 1.0
+	for a:=1; a <= 10; a++ {
+		old_z = z
+		z -= (z*z - x) / (2*z)
+		fmt.Printf("z value %.10f\n", z)
+		
+		if math.Abs(z - old_z) < 1e-6 {
+			//here we break since we don't see change on the 6 decimal mark
+			break
+		}
+	}
+	return z
+}
+
+func main() {
+	fmt.Println(Sqrt(2))
+}
+```
+
+##### Output:
+
+```bash
+z value 1.5000000000
+z value 1.4166666667
+z value 1.4142156863
+z value 1.4142135624
+z value 1.4142135624
+1.4142135623730951
+```
+
+
+----
+## Switch
+
+Switchs in Go act more like if statements, they break by default and they are more flexible on what you can switch case on 
+
+```Go
+func main() {
+	fmt.Print("Go runs on ")
+	switch os := runtime.GOOS; os {
+	case "darwin":
+		fmt.Println("macOS.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.\n", os)
+	}
+}
+```
+
+
+>"Another important difference is that Go's switch is more flexible: cases can be variables or expressions (not just constants), and you can switch on any comparable type (not just integers)."
+
+can switch on variables/expressions
+```Go
+	// Go ✅ - Java ❌
+	x := 10
+	y := 20
+	
+	switch value {
+	case x:           // Variable as case
+	case y + 5:       // Expression as case  
+	case len("hello"): // Function call as case
+	}
+```
+
+Can switch on strings
+```Go
+	// Go ✅ - Java ❌ (well, Java added this in Java 7, but traditionally no)
+	switch name {
+	case "alice":
+	    fmt.Println("Hello Alice")
+	case "bob":
+	    fmt.Println("Hello Bob")
+	}
+```
+
+Multiple values
+```Go
+	// Go ✅ - Java ❌
+	switch day {
+	case "saturday", "sunday":
+	    fmt.Println("Weekend!")
+	case "monday", "tuesday", "wednesday", "thursday", "friday":
+	    fmt.Println("Weekday")
+	}
+```
+
+```Go
+	// Go ✅ - Java ❌
+	type Status bool
+	var isReady Status = true
+	
+	switch isReady {
+	case true:
+	    fmt.Println("Ready")
+	case false:
+	    fmt.Println("Not ready")
+	}
+```
+
+
+```Go
+func main() {
+	fmt.Println("When's Saturday?")
+	today := time.Now().Weekday()
+	switch time.Saturday {
+	case today + 0:
+		fmt.Println("Today.")
+	case today + 1:
+		fmt.Println("Tomorrow.")
+	case today + 2:
+		fmt.Println("In two days.")
+	default:
+		fmt.Println("Too far away.")
+	}
+}
+```
+
+> ^ this is interesting since we use a constant, and we use the case as if's to show a message if Saturday is still away from us
+
+#### Switch with no condition = switch true {}
+
+>This construct can be a clean way to write long if-then-else chains.
+
+```Go
+func main() {
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+}
+```
+
+----
+
+## Defer
+
+A defer statement defers the execution of a function until the surrounding function returns.
+
+The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
+
+```Go
+func main() {
+	defer fmt.Println("world")
+	fmt.Println("hello")
+}
+```
+
+So `defer` is like having multiple tiny `finally` blocks that you can sprinkle throughout your function, and they execute in reverse order. Much more flexible than Java's single `finally`!
+
+`defer` go into a stack
+
+```Go
+
+func main() {
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
+}
+```
+
+```
+counting
+done
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+```
 
