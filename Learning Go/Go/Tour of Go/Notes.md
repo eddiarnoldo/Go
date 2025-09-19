@@ -277,3 +277,86 @@ func main() {
 	fmt.Println(needFloat(Big))
 }
 ```
+
+
+-----
+
+## For
+
+```go
+sum := 0
+
+for a := 0; a < 10; a++ {
+	sum += a
+}
+
+fmt.Println(sum)
+```
+
+Go has only one looping construct, the `for` loop.
+
+The basic `for` loop has three components separated by semicolons:
+
+- the init statement: executed before the first iteration
+- the condition expression: evaluated before every iteration
+- the post statement: executed at the end of every iteration
+
+
+```go
+func main() {
+	sum := 1
+	for ; sum < 1000; {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+```
+
+### For is  `Go` While
+
+> You can drop the `;`
+
+```go
+func main() {
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	}
+	fmt.Println(sum)
+}
+```
+
+### For (forever)
+
+```go
+for {
+	}
+```
+
+
+## IF
+
+Same as the `for` the `if` does not need the `()`
+
+```go
+func sqrt(x float64) string {
+	if x < 0 {
+		return sqrt(-x) + "i"
+	}
+	return fmt.Sprint(math.Sqrt(x))
+}
+```
+
+> `if` also supports short statements
+
+```go
+func pow(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
+	}
+	return lim
+}
+```
+
+` v := math.Pow(x, n);` this only exists in the context of the `if` also in the `else` body
+
