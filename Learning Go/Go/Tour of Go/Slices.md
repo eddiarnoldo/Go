@@ -209,11 +209,11 @@ package main
 import "fmt"
 
 func main() {
-	a := make([]int, 5)
-	printSlice("a", a)
+	a := make([]int, 5) // <- creates a slice of len 5 cap 5 initialized all 0
+	printSlice("a", a) 
 
-	b := make([]int, 0, 5)
-	printSlice("b", b)
+	b := make([]int, 0, 5) // <- creates a slice of len 0 cap 5 panics if access
+	printSlice("b", b) // to b[0] we need to use append to add elements
 
 	c := b[:2]
 	printSlice("c", c)

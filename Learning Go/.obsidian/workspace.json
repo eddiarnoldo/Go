@@ -209,12 +209,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Slices.md",
+                "file": "Go/Tour of Go/Maps.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Slices"
+              "title": "Maps"
             }
           }
         ],
@@ -283,7 +283,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Slices.md",
+                "file": "Go/Tour of Go/Maps.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -311,7 +311,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Slices"
+              "title": "Graph of Maps"
             }
           }
         ]
@@ -411,16 +411,19 @@
   },
   "active": "ae437c547163e1dd",
   "lastOpenFiles": [
-    "Slices.md",
+    "Go/Tour of Go/If.md",
+    "Go/Tour of Go/Maps.md",
+    "Go/Tour of Go/Range.md",
+    "Pasted image 20251019232535.png",
+    "Go/Tour of Go/Slices.md",
+    "Go/Tour of Go/Variables.md",
     "Go/Tour of Go/1 - Notes.md",
     "Go/Tour of Go/Array.md",
     "Go/Tour of Go/Struct.md",
     "Go/Tour of Go/Pointers.md",
     "Go/Tour of Go/Functions vs Methods early lookup.md",
     "Go/Tour of Go/Defer.md",
-    "Go/Tour of Go/Variables.md",
     "Go/Tour of Go/Switch.md",
-    "Go/Tour of Go/If.md",
     "Go/Tour of Go/For.md",
     "Go/Tour of Go/Constants.md",
     "Go/Tour of Go/Types.md",
