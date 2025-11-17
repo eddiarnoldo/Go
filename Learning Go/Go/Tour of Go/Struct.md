@@ -30,7 +30,7 @@ Struct fields can be accessed through a struct pointer.
 ```Go
 func main() {
 	v := Vertex{1, 2}
-	p := &v
+	p := &v // this is giving us a pointer to v
 	p.X = 1e9 //this would have been (*p).X but Go allows a simple call with p.X
 	fmt.Println(v)
 }
