@@ -1,4 +1,4 @@
-A Struct isn't a collection of fields
+A Struct is a collection of fields
 
 ```Go
 package main
