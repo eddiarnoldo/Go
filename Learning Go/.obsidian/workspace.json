@@ -223,12 +223,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Go/Tour of Go/Function values.md",
+                "file": "Go/Tour of Go/Pointers.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Function values"
+              "title": "Pointers"
             }
           }
         ],
@@ -297,7 +297,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Go/Tour of Go/Function values.md",
+                "file": "Go/Tour of Go/Pointers.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -325,7 +325,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Function values"
+              "title": "Graph of Pointers"
             }
           }
         ]
