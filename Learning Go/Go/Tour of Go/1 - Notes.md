@@ -13,3 +13,4 @@
 - [[Array]]
 - [[Slices]]
 - [[Methods]]
+- [[Interfaces]]

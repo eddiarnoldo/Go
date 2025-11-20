@@ -180,3 +180,9 @@ func AbsFunc(v Vertex) float64 {
 ```
 
 ## Choosing a value or a pointer receiver
+There are 2 reasons on why to use a pointer receiver
+
+- So the method can modify the value that its receiver points to
+- To avoid copying the value on each method call. This can be more efficient if the receiver is a large struct.
+
+In general, all methods on a given type should have either value or pointer receivers, but not a mixture of both.

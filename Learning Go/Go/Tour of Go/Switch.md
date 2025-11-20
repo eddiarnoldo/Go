@@ -1,6 +1,6 @@
 
 
-Switchs in Go act more like if statements, they break by default and they are more flexible on what you can switch case on 
+Switch in Go act more like if statements, they break by default and they are more flexible on what you can switch case on 
 
 ```Go
 func main() {
