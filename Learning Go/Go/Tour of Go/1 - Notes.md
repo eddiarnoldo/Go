@@ -12,3 +12,4 @@
 - [[Struct]]
 - [[Array]]
 - [[Slices]]
+- [[Methods]]
