@@ -216,9 +216,21 @@
               "icon": "lucide-file",
               "title": "Slices"
             }
+          },
+          {
+            "id": "ce3683b3c87aff80",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.3"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.10.3"
+            }
           }
         ],
-        "currentTab": 14
+        "currentTab": 15
       }
     ],
     "direction": "vertical"
@@ -283,7 +295,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Go/Tour of Go/Slices.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -311,7 +322,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Slices"
+              "title": "Graph view"
             }
           }
         ]
@@ -409,7 +420,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ae437c547163e1dd",
+  "active": "ce3683b3c87aff80",
   "lastOpenFiles": [
     "Go/Tour of Go/Function values.md",
     "Go/Tour of Go/For.md",
