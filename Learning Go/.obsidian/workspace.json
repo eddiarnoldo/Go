@@ -221,12 +221,14 @@
             "id": "ce3683b3c87aff80",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.10.3"
+                "file": "Go/Tour of Go/Function values.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.10.3"
+              "icon": "lucide-file",
+              "title": "Function values"
             }
           }
         ],
@@ -295,6 +297,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "Go/Tour of Go/Function values.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -322,7 +325,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "Graph of Function values"
             }
           }
         ]
