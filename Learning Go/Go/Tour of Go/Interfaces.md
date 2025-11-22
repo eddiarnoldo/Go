@@ -278,3 +278,128 @@ Prints
 (hello, string)
 ```
 
+Everything implements the Empty interface!!
+
+## Type assertions
+
+A type assertion provides access to an interface value's underlying concrete value.
+
+```Go
+t  := i.(T)
+```
+
+If `i` does not hold a `T`, the statement will trigger a panic.
+
+To _test_ whether an interface value holds a specific type, a type assertion can return two values: the underlying value and a boolean value that reports whether the assertion succeeded.
+
+```Go
+t, ok := i.(T)
+```
+
+```Go
+func main() {
+	var i interface{} = "hello"
+
+	s := i.(string)
+	fmt.Println(s)
+
+	s, ok := i.(string)
+	fmt.Println(s, ok)
+
+	f, ok := i.(float64)
+	fmt.Println(f, ok)
+
+	f = i.(float64) // panic
+	fmt.Println(f)
+}
+```
+
+> This is very similar to when we check if a map has an entry for a given key
+>`elem, ok = m[key]`
+
+
+## Type switches
+A _type switch_ is a construct that permits several type assertions in series.
+
+A type switch is like a regular switch statement, but the cases in a type switch specify types (not values), and those values are compared against the type of the value held by the given interface value.
+
+```Go
+switch v := i.(type) {
+case T:
+    // here v has type T
+case S:
+    // here v has type S
+default:
+    // no match; here v has the same type as i
+}
+```
+
+The declaration in a type switch has the same syntax as a type assertion `i.(T)`, but the specific type `T` is replaced with the keyword `type`.
+
+
+```Go
+func do(i interface{}) {
+	switch v := i.(type) {
+	case int:
+		fmt.Printf("Twice %v is %v\n", v, v*2)
+	case string:
+		fmt.Printf("%q is %v bytes long\n", v, len(v))
+	case bool:
+		fmt.Printf("This is a bool with value %v \n", v)
+	default:
+		fmt.Printf("I don't know about type %T!\n", v)
+	}
+}
+
+func main() {
+	do(21)
+	do("hello")
+	do(true)
+	do(24.56)
+}
+```
+
+Here we can see the do function receives a empty interface parameter and then uses a type switch to validate the types.
+
+## Stringers
+One of the most ubiquitous interfaces is [`Stringer`](https://go.dev/pkg/fmt/#Stringer) defined by the [`fmt`](https://go.dev/pkg/fmt/) package.
+
+```Go
+type Stringer interface {
+    String() string
+}
+```
+
+A `Stringer` is a type that can describe itself as a string. The `fmt` package (and many others) look for this interface to print values.
+
+```Go
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func (p Person) String() string {
+	return fmt.Sprintf("%v (%v years)", p.Name, p.Age)
+}
+
+func main() {
+	a := Person{"Arthur Dent", 42}
+	z := Person{"Zaphod Beeblebrox", 9001}
+	fmt.Println(a, z)
+	
+	b := Game{"Leyend of Zelda Ocarina of Time", 10.0}
+	fmt.Println(b)
+}
+
+// I created this!!
+type Game struct {
+	Title string
+	Rating float64
+}
+
+func (g Game) String() string {
+	return fmt.Sprintf("This game title is %v, and it has a rating of %f", g.Title, g.Rating)
+}
+```
+
