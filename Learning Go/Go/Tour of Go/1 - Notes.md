@@ -14,3 +14,4 @@
 - [[Slices]]
 - [[Methods]]
 - [[Interfaces]]
+- [[Errors]]
