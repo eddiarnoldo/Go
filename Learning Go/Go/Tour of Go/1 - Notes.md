@@ -15,3 +15,4 @@
 - [[Methods]]
 - [[Interfaces]]
 - [[Errors]]
+- [[Readers]]

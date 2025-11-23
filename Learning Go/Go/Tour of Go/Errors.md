@@ -57,6 +57,11 @@ func main() {
 
 ## Exercise, add error handling to previous Newton formula
 
+
+**Note:** A call to `fmt.Sprint(e)` inside the `Error` method will send the program into an infinite loop. You can avoid this by converting `e` first: `fmt.Sprint(float64(e))`. Why?
+
+>This is because if we don't convert `num` which in this scenario is a type that implements error it will call back Error on it and then end on an infinite loop. We need to convert it to `float64` so it no longer implements error interface and it does not create a stack exception
+
 ```Go
 package main
 
@@ -103,6 +108,7 @@ func main() {
 }
 
 ```
+
 
 
 - `num` is a pointer (`*ErrNegativeSqrt`)
