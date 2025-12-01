@@ -19,4 +19,4 @@
 - [[Images]]
 - [[Type parameters]]
 - [[Generic Types]]
-- [[Goroutines]]
+- [[Concurrency]]
