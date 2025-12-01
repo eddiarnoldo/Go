@@ -16,3 +16,7 @@
 - [[Interfaces]]
 - [[Errors]]
 - [[Readers]]
+- [[Images]]
+- [[Type parameters]]
+- [[Generic Types]]
+- [[Goroutines]]
