@@ -192,7 +192,7 @@ func main() {
 
 The `select` statement lets a goroutine wait on multiple communication operations.
 
-A `select` blocks until one of its cases can run, then it executes that case. It chooses one at random if multiple are ready.
+A `select` **blocks until one of its cases can run**, then it executes that case. It chooses one at random if multiple are ready.
 
 ```Go
 package main
@@ -268,6 +268,273 @@ go
 
 - The second case executes, prints "quit", and returns
 
-## The answer to your question:
 
 `case c <- x:` stops being chosen because **there's no receiver ready** anymore. The select then chooses the `case <-quit:` instead, which has a value waiting.
+
+## Default Selection
+The `default` case in a `select` runts in no other case is ready
+
+```Go
+select {
+case i := <-c:
+    // use i
+default:
+    // receiving from c would block
+}
+```
+
+
+```Go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	start := time.Now()
+	tick := time.Tick(100 * time.Millisecond)
+	boom := time.After(500 * time.Millisecond)
+	
+	//
+	elapsed := func() time.Duration {
+		return time.Since(start).Round(time.Millisecond)
+	}
+	for {
+		select {
+		case <-tick:
+			fmt.Printf("[%6s] tick.\n", elapsed())
+		case <-boom:
+			fmt.Printf("[%6s] BOOM!\n", elapsed())
+			return
+		default:
+			fmt.Printf("[%6s]     .\n", elapsed())
+			time.Sleep(50 * time.Millisecond)
+		}
+	}
+}
+
+```
+
+
+> time.Tick returns a channel of type Time
+
+```Go
+func After(d Duration) <-chan Time {
+	return NewTimer(d).C 
+}
+
+type Timer struct { 
+	C <-chan Time // The channel on which the time is delivered // ... internal fields 
+}
+
+type Time struct { // wall and ext hold the wall clock time and monotonic clock reading 
+	wall uint64 
+	ext int64 
+	loc *Location // can be nil
+}
+```
+
+
+## Exercise equivalent binary trees
+
+A function to check whether two binary trees store the same sequence is quite complex in most languages. We'll use Go's concurrency and channels to write a simple solution.
+
+This example uses the `tree` package, which defines the type:
+
+```Go
+type Tree struct {
+    Left  *Tree
+    Value int
+    Right *Tree
+}
+```
+
+### 1st attempt
+
+```Go
+package main
+
+import (
+	"golang.org/x/tour/tree"
+	"fmt"
+	"slices"
+)
+
+// Walk walks the tree t sending all values
+// from the tree to the channel ch.
+func Walk(t *tree.Tree, ch chan int) {
+	if t == nil {
+		return
+	}
+	
+	if t.Left != nil {
+		Walk(t.Left, ch)
+	}
+	
+	ch <- t.Value
+	
+	if t.Right != nil {
+		Walk(t.Right, ch)
+	}
+	
+	
+}
+
+// Same determines whether the trees
+// t1 and t2 contain the same values.
+func Same(t1, t2 *tree.Tree) bool {
+	chT1 := make(chan int, 10)
+	go Walk(t1, chT1)
+	
+	chT2 := make(chan int, 10)
+	go Walk(t2, chT2)
+	
+	t1Elems := make([]int, 0)
+	t2Elems := make([]int, 0)
+	for i := 0; i < 10; i++ {
+		t1Elems = append(t1Elems, <-chT1)
+		t2Elems = append(t2Elems, <-chT2) 
+	}
+	
+	fmt.Printf("Elements are %s \n", t1Elems)
+	fmt.Printf("Elements are %s \n", t2Elems)
+	
+	return slices.Equal(t1Elems, t2Elems)
+	
+}
+
+func main() {
+	firstTest := Same(tree.New(1), tree.New(1))
+	fmt.Println(firstTest)
+	
+	secondTest := Same(tree.New(1), tree.New(2))
+	fmt.Println(secondTest)
+}
+
+```
+
+
+Improved version using `defer` and helper method to close channel and use range closed pattern
+
+```Go
+package main
+
+import (
+	"golang.org/x/tour/tree"
+	"fmt"
+	"slices"
+)
+
+// Walk walks the tree t sending all values
+// from the tree to the channel ch.
+
+func Walk(t *tree.Tree, ch chan int) {
+    defer close(ch)  // Ensure channel closes when function returns
+    walkTree(t, ch)
+}
+
+func walkTree(t *tree.Tree, ch chan int) {
+	if t == nil {
+		return
+	}
+	
+	walkTree(t.Left, ch)
+	ch <- t.Value
+	walkTree(t.Right, ch)	
+}
+
+// Same determines whether the trees
+// t1 and t2 contain the same values.
+func Same(t1, t2 *tree.Tree) bool {
+    chT1 := make(chan int)
+    chT2 := make(chan int)
+    
+    go Walk(t1, chT1)
+    go Walk(t2, chT2)
+    
+    t1Elems := []int{}
+    t2Elems := []int{}
+    
+    for v := range chT1 {  // range stops when channel closes
+        t1Elems = append(t1Elems, v)
+    }
+    
+    for v := range chT2 {
+        t2Elems = append(t2Elems, v)
+    }
+    
+    return slices.Equal(t1Elems, t2Elems)
+}
+
+func main() {
+	firstTest := Same(tree.New(1), tree.New(1))
+	fmt.Println(firstTest)
+	
+	secondTest := Same(tree.New(1), tree.New(2))
+	fmt.Println(secondTest)
+}
+
+```
+
+
+## sync.Mutex
+
+We've seen how channels are great for communication among goroutines.
+
+But what if we don't need communication? What if we just want to make sure only one goroutine can access a variable at a time to avoid conflicts?
+
+This concept is called _mutual exclusion_, and the conventional name for the data structure that provides it is _mutex_.
+
+Go's standard library provides mutual exclusion with [`sync.Mutex`](https://go.dev/pkg/sync/#Mutex) and its two methods:
+
+- `Lock`
+- `Unlock`
+
+We can define a block of code to be executed in mutual exclusion by surrounding it with a call to `Lock` and `Unlock` as shown on the `Inc` method.
+
+We can also use `defer` to ensure the mutex will be unlocked as in the `Value` method.
+
+```Go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+// SafeCounter is safe to use concurrently.
+type SafeCounter struct {
+	mu sync.Mutex
+	v  map[string]int
+}
+
+// Inc increments the counter for the given key.
+func (c *SafeCounter) Inc(key string) {
+	c.mu.Lock()
+	// Lock so only one goroutine at a time can access the map c.v.
+	c.v[key]++
+	c.mu.Unlock()
+}
+
+// Value returns the current value of the counter for the given key.
+func (c *SafeCounter) Value(key string) int {
+	c.mu.Lock()
+	// Lock so only one goroutine at a time can access the map c.v.
+	defer c.mu.Unlock()
+	return c.v[key]
+}
+
+func main() {
+	c := SafeCounter{v: make(map[string]int)}
+	for i := 0; i < 100; i++ {
+		go c.Inc("somekey")
+	}
+
+	time.Sleep(time.Second)
+	fmt.Println(c.Value("somekey"))
+}
+
+```
