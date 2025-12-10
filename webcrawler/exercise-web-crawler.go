@@ -70,7 +70,6 @@ func Crawl(url string, depth int, fetcher Fetcher, status chan bool, safeMap *Sa
 
 	//This go routine can finish
 	status <- true
-	return
 }
 
 func main() {
