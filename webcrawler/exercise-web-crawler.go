@@ -20,7 +20,8 @@ func (m *SafeMap) SetVal(key string, val bool) {
 func (m *SafeMap) GetVal(key string) bool {
 	m.mu.Lock()
 	defer m.mu.Unlock()
-	return m.visited[key]
+	_, ok := m.visited[key]
+	return ok
 }
 
 type Fetcher interface {
