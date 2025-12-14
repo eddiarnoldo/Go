@@ -27,16 +27,44 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Go/Tour of Go/Concurrency.md",
+                "file": "Go/Tour of Go/1 - Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Concurrency"
+              "title": "1 - Notes"
+            }
+          },
+          {
+            "id": "8317501b6974bd65",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Go/Tour of Go/1 - Notes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1 - Notes"
+            }
+          },
+          {
+            "id": "a00142f5d269efc4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Go/Tour of Go/Go Concurrency patterns.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Go Concurrency patterns"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -48,6 +76,7 @@
       {
         "id": "883791380370f6e8",
         "type": "tabs",
+        "dimension": 70.06172839506173,
         "children": [
           {
             "id": "1a3512519a3bc41a",
@@ -68,7 +97,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "slice",
+                "query": "interface",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -94,6 +123,7 @@
       {
         "id": "3bef504e9f9caff9",
         "type": "tabs",
+        "dimension": 29.938271604938272,
         "children": [
           {
             "id": "cf526ca1d759d20d",
@@ -101,7 +131,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Go/Tour of Go/Concurrency.md",
+                "file": "Go/Tour of Go/Go Concurrency patterns.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -129,7 +159,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Concurrency"
+              "title": "Graph of Go Concurrency patterns"
             }
           }
         ]
@@ -227,11 +257,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ad514dc653b4d62a",
+  "active": "a00142f5d269efc4",
   "lastOpenFiles": [
-    "Go/Tour of Go/Slices.md",
-    "Go/Tour of Go/1 - Notes.md",
     "Go/Tour of Go/Concurrency.md",
+    "Go/Tour of Go/1 - Notes.md",
+    "Go/Tour of Go/Interfaces.md",
+    "Untitled.md",
+    "Go/Tour of Go/Slices.md",
+    "Go/Tour of Go/Go Concurrency patterns.md",
+    "Go/Tour of Go/Resources/Pasted image 20251210214855.png",
     "Go/Tour of Go/For.md",
     "Go/Tour of Go/Function values.md",
     "Go/Tour of Go/Array.md",
@@ -240,7 +274,6 @@
     "Go/Create a Go module/5 - Messages for multiple people.md",
     "Go/Tour of Go/Methods.md",
     "Go/Tour of Go/Images.md",
-    "Go/Tour of Go/Interfaces.md",
     "Go/Tour of Go/If.md",
     "Go/Tour of Go/Resources/Pasted image 20251122235931.png",
     "Go/Tour of Go/Resources",
@@ -254,13 +287,10 @@
     "Go/Tour of Go/Constants.md",
     "Go/Tour of Go/Packages.md",
     "Go/Tour of Go/Functions vs Methods early lookup.md",
-    "Go/Create a Go module/6 - Add a test.md",
     "Untitled.base",
     "Untitled.canvas",
     "Untitled 2.base",
     "Untitled 1.base",
-    "Go/Tour of Go/Pointers.md",
-    "Go/Tour of Go/Notes.md",
     "Go/Tour of Go",
     "Go/Create a Go module",
     "Go"
