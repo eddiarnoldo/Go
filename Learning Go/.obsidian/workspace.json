@@ -4,11 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "fc94bb4146b991bf",
+        "id": "79ae83911309538b",
         "type": "tabs",
         "children": [
           {
-            "id": "7df88a70d65fee7d",
+            "id": "c0028e05d30c7a80",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Go/Tour of Go/Interfaces.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Interfaces"
+            }
+          },
+          {
+            "id": "49d546074dd6aaf8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,52 +33,10 @@
               },
               "icon": "lucide-file",
               "title": "1 - Notes"
-            }
-          },
-          {
-            "id": "ad514dc653b4d62a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Go/Tour of Go/1 - Notes.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "1 - Notes"
-            }
-          },
-          {
-            "id": "8317501b6974bd65",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Go/Tour of Go/1 - Notes.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "1 - Notes"
-            }
-          },
-          {
-            "id": "a00142f5d269efc4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Go/Tour of Go/Go Concurrency patterns.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Go Concurrency patterns"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -76,7 +48,6 @@
       {
         "id": "883791380370f6e8",
         "type": "tabs",
-        "dimension": 70.06172839506173,
         "children": [
           {
             "id": "1a3512519a3bc41a",
@@ -97,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "interface",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -123,7 +94,6 @@
       {
         "id": "3bef504e9f9caff9",
         "type": "tabs",
-        "dimension": 29.938271604938272,
         "children": [
           {
             "id": "cf526ca1d759d20d",
@@ -131,7 +101,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Go/Tour of Go/Go Concurrency patterns.md",
+                "file": "Go/Tour of Go/1 - Notes.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -154,12 +124,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 1,
+                  "scale": 1.2583024633077533,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Go Concurrency patterns"
+              "title": "Graph of 1 - Notes"
             }
           }
         ]
@@ -257,37 +227,38 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a00142f5d269efc4",
+  "active": "1a3512519a3bc41a",
   "lastOpenFiles": [
+    "Go/Tour of Go/Resources/Pasted image 20251210214855.png",
+    "Go/Tour of Go/Go Concurrency patterns.md",
+    "Go/This Is How I Code Go",
+    "Go/Tour of Go/Generic Types.md",
+    "Untitled.base",
     "Go/Tour of Go/Concurrency.md",
     "Go/Tour of Go/1 - Notes.md",
     "Go/Tour of Go/Interfaces.md",
-    "Untitled.md",
-    "Go/Tour of Go/Slices.md",
-    "Go/Tour of Go/Go Concurrency patterns.md",
-    "Go/Tour of Go/Resources/Pasted image 20251210214855.png",
-    "Go/Tour of Go/For.md",
-    "Go/Tour of Go/Function values.md",
-    "Go/Tour of Go/Array.md",
-    "Go/Tour of Go/Generic Types.md",
-    "Go/Tour of Go/Type parameters.md",
+    "Go/Tour of Go/Errors.md",
+    "Go/Create a Go module/1 - Hello world + First Steps.md",
     "Go/Create a Go module/5 - Messages for multiple people.md",
+    "Go/Create a Go module/6 - Compile and Install code to run.md",
+    "Go/Tour of Go/Constants.md",
+    "Go/Tour of Go/Struct.md",
+    "Goroutines.md",
+    "Go/Tour of Go/Function values.md",
+    "Go/Tour of Go/Type parameters.md",
+    "Go/Tour of Go/For.md",
+    "Go/Tour of Go/Slices.md",
     "Go/Tour of Go/Methods.md",
+    "Go/Tour of Go/Array.md",
     "Go/Tour of Go/Images.md",
     "Go/Tour of Go/If.md",
     "Go/Tour of Go/Resources/Pasted image 20251122235931.png",
     "Go/Tour of Go/Resources",
-    "Go/Tour of Go/Errors.md",
     "Go/Tour of Go/Readers.md",
     "Go/Tour of Go/Maps.md",
     "Go/Tour of Go/Switch.md",
     "Go/Tour of Go/Types.md",
     "Go/Tour of Go/Functions.md",
-    "Go/Create a Go module/2 - Modules.md",
-    "Go/Tour of Go/Constants.md",
-    "Go/Tour of Go/Packages.md",
-    "Go/Tour of Go/Functions vs Methods early lookup.md",
-    "Untitled.base",
     "Untitled.canvas",
     "Untitled 2.base",
     "Untitled 1.base",
