@@ -18,9 +18,12 @@ func fakeSearch(kind string) Search {
 }
 
 var (
-	Web = fakeSearch("web")
-	Img = fakeSearch("image")
-	Vid = fakeSearch("video")
+	Web  = fakeSearch("web")
+	Web2 = fakeSearch("web")
+	Img  = fakeSearch("image")
+	Img2 = fakeSearch("image")
+	Vid  = fakeSearch("video")
+	Vid2 = fakeSearch("video")
 )
 
 func main() {
@@ -46,7 +49,28 @@ func main() {
 	elapsed3 := time.Since(start3)
 
 	fmt.Println(results3)
-	fmt.Printf("Search2 took %s\n", elapsed3)
+	fmt.Printf("Search3 took %s\n", elapsed3)
+	fmt.Println("====== \n")
+
+	// Replicas example
+	start4 := time.Now()
+	results4 := First("inuyasha",
+		fakeSearch("replica 1"),
+		fakeSearch("replica 2"),
+		fakeSearch("replica 3"),
+	)
+	elapsed4 := time.Since(start4)
+	fmt.Println(results4)
+	fmt.Printf("Search4 took %s\n", elapsed4)
+	fmt.Println("====== \n")
+
+	// Here we merge all the concepts together, we have replicas so we ge the fastest result from each category
+	start5 := time.Now()
+	results5 := Google3("ElfenLied")
+	elapsed5 := time.Since(start5)
+
+	fmt.Println(results5)
+	fmt.Printf("Search5 took %s\n", elapsed5)
 
 }
 
@@ -90,5 +114,38 @@ func Google21(query string) (results []Result) {
 		}
 	}
 	//this is a no params return, this can be done because results is named in the function signature
+	return
+}
+
+// How do we avoid discarding results from slower replicas?,
+// Replicate the servers. Send requests to multiple replicas and use the first result that comes back.
+// #replicas ...Search  <- variadic function parameter
+func First(query string, replicas ...Search) Result {
+	c := make(chan Result)
+	searchReplica := func(i int) { c <- replicas[i](query) }
+	for i := range replicas {
+		go searchReplica(i)
+	}
+	return <-c
+}
+
+// Here we merge all the concepts together, we have replicas so we ge the fastest result from each category
+func Google3(query string) (results []Result) {
+	c := make(chan Result)
+	//Span Go routines
+	go func() { c <- First(query, Web, Web2) }()
+	go func() { c <- First(query, Img, Img2) }()
+	go func() { c <- First(query, Vid, Vid2) }()
+
+	timeout := time.After(80 * time.Millisecond)
+	for i := 0; i < 3; i++ {
+		select {
+		case res := <-c:
+			results = append(results, res)
+		case <-timeout:
+			fmt.Println("timed out")
+			return
+		}
+	}
 	return
 }
