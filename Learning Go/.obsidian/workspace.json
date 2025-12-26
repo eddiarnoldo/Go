@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "interface",
+                "query": "...",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -88,7 +88,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "3bef504e9f9caff9",
@@ -226,7 +227,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c0028e05d30c7a80",
+  "active": "a65aad054a36c3ff",
   "lastOpenFiles": [
     "Go/Tour of Go/Interfaces.md",
     "Go/This Is How I Code Go/Notes.md",

@@ -58,7 +58,7 @@ func newServer() *server {
 `http.Handler` is an interface and it can be simply used by implementing the method
 
 ```Go
-func (s *server) ServeHTTP(w http.ResponseWritter, r *http.Request) {
+func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.router.ServeHTTP(w, r)
 }
 ```
@@ -111,7 +111,7 @@ This naming will help you since it uses alphabetical order to keep your methods 
 ```Go
 func (s *server) handleSomething() http.HandlerFunc {
 	something := prepareSomething()
-	return func(w http.ResponseWritter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
 		//use "something"
 	}
 }
@@ -124,7 +124,7 @@ if you have any specific dependencies for a couple of handlers that you don't wa
 
 ```Go
 func (s *server) handleGreeting(format string) http.HandlerFunc {
-	return func(w http.ResponseWritter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
 		fmt.FprintF(w, format, r.FormValue("name"))
 	}
 }
@@ -166,7 +166,7 @@ type serverComments struct {
 ## HandlerFunc over Handler
 ```Go
 func (s *server) handleSomething() http.HandlerFunc {
-	return func(w http.ResponseWritter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 ```
@@ -178,7 +178,7 @@ func (s *server) handleSomething() http.HandlerFunc {
 ## Middleware are just Go functions
 ```Go
 func (s *server) adminOnly(h http.HandlerFunc) http.HandlerFunc () {
-		return func (w http.ResponseWritter, r *http.Request) {
+		return func (w http.ResponseWriter, r *http.Request) {
 			if !currentUser(r).isAdmin {
 				http.notFound(w, r)
 				return
@@ -218,7 +218,7 @@ func (s *server) routes() {
 ## Respond helper
 
 ```Go
-func (s *server) respond(w http.ResponseWritter, r *http.Response, data interface{}, status int) {
+func (s *server) respond(w http.ResponseWriter, r *http.Response, data interface{}, status int) {
 	w.WriteHeader(status)
 	if data != nil {
 		err := json.NewEncoder(w).Encode(data)
@@ -237,3 +237,142 @@ Don't over abstract stuff start simple, e.g don't create a function to prevent r
 - Later you can make this more sophisticated (if needed)
 
 ## Decoding helper
+
+```Go
+func (s *server) decode(w http.ResponseWriter, r *http.Request, v interface{}) error  {
+	return json.NewDecoder(r.Body).Decode(v)
+}
+```
+
+- Abstract decoding and do the bare bones initially
+- Later you can make this more sophisticated (if needed)
+
+## Future proof helpers
+- Always take `http.Responsewriter` and `*http.Request`
+
+## Request and response data types
+
+```Go
+func (s *server) handleGreet() http.HandlerFunc {
+	type request struct {
+		Name string
+	}
+	
+	type response struct {
+		Greeting string `json:"greeting"`
+	}
+	
+	return func(w, http.ResponseWriter, r http.Response) {
+		...
+	}
+}
+```
+
+- Co-located stuff is easier to find
+- Declutters package space
+- No unique or long names for these types
+
+> Doing this hides them instead of this handler, makes it simpler to fin
+>  A junior will have everything they need right there
+
+## Lazy setup with `sync.Once`
+
+```Go
+func (s *server) handleTemplate(files string...) http.HandlerFunc {
+	var (
+		init     sync.Once
+		tpl      *template.Template
+		tplError error
+	)
+	
+	return func(w http.ResponseWriter, r *http.Request) {
+		init.Do(func(){
+			tpl, tlpError = template.ParseFiles(files...)
+		})
+		
+		if tplerror != nil {
+			http.Error(w, tplerr.Error(), http.StatusInternalServerError)
+			return
+		}
+		
+		//use tpl
+	}
+}
+```
+
+> Every http request gets is own Go routine!
+
+- Perform expensive setup when the handler is first hit to improve startup time
+- if the handler isn't called, the work is never done.
+
+```go
+// At startup, you'd do something like:
+mux.HandleFunc("/page", s.handleTemplate("header.html", "page.html"))
+```
+
+At this point:
+
+- ✅ `handleTemplate()` **IS called** - it runs and returns the `http.HandlerFunc`
+- ❌ The **returned handler function** is NOT called yet
+- ❌ Template parsing does NOT happen yet
+
+The expensive work (template parsing) is inside the **returned function**, not in `handleTemplate()` itself.
+
+## When the First HTTP Request Arrives
+
+Someone hits `GET /page`:
+
+- ✅ Now the **returned handler function** executes
+- ✅ `init.Do()` runs for the first time
+- ✅ Template parsing happens **now**
+
+
+Ah yes! That's the key piece. Go has a **built-in templating language** for generating dynamic HTML (and other text formats).
+
+## Go's Template Syntax
+
+Go templates use `{{}}` for special commands. Here's a simple example:
+
+**template.html:**
+
+html
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Hello, {{.Name}}!</h1>
+  <p>You are {{.Age}} years old.</p>
+</body>
+</html>
+```
+
+**Go code:**
+
+go
+
+```go
+type Person struct {
+    Name string
+    Age  int
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+    data := Person{Name: "Alice", Age: 30}
+    tpl.Execute(w, data)  // Fills in {{.Name}} and {{.Age}}
+}
+```
+
+**Output HTML:**
+
+html
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Hello, Alice!</h1>
+  <p>You are 30 years old.</p>
+</body>
+</html>
+```
