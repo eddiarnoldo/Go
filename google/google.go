@@ -138,7 +138,7 @@ func Google3(query string) (results []Result) {
 	go func() { c <- First(query, Vid, Vid2) }()
 
 	timeout := time.After(80 * time.Millisecond)
-	for i := 0; i < 3; i++ {
+	for range 3 {
 		select {
 		case res := <-c:
 			results = append(results, res)

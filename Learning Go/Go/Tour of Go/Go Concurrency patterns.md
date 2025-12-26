@@ -473,3 +473,12 @@ then mix results
 
 How do we implement this?
 
+
+
+--- Pending to add more notes see goo. google.go file
+
+## Don't overdo it
+Use the right tool for the right job, don't over use go routines etc if they are not needed.
+
+## Conclusion
+
